@@ -10,6 +10,8 @@ while(1):
     ret, frame = cap.read()
     fgmask = fgbg.apply(frame)
     
+    fgmask = cv2.GaussianBlur(fgmask,(11,11),0)
+    
     ret, thresh = cv2.threshold(fgmask,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
     ret, binary = cv2.threshold(fgmask,127,255,cv2.THRESH_BINARY)
       
@@ -26,8 +28,3 @@ while(1):
         break
 cap.release()
 cv2.destroyAllWindows()
-
-
-'''img = cv2.imread('coins.png')
-gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-ret, thresh = cv2.threshold(gray,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)'''
