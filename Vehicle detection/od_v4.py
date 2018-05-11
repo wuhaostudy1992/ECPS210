@@ -59,7 +59,7 @@ while True:
             rect = cv2.minAreaRect(c)
             box = cv2.boxPoints(rect)
             box = np.int0(box)
-            #cv2.drawContours(frame,[box],0,(0,0,255),2)
+            cv2.drawContours(frame,[box],0,(0,0,255),2)
             center = tuple((box[1] + box[3])//2)
             cv2.circle(frame, center, 3, (0, 0, 255), -1)
         else:
